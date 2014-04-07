@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'dep-selector-libgecode3/version'
+require 'dep-selector-libgecode/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "dep-selector-libgecode3"
-  spec.version       = DepSelectorLibgecode3::VERSION
+  spec.name          = "dep-selector-libgecode"
+  spec.version       = DepSelectorLibgecode::VERSION
   spec.authors       = ["danielsdeleo"]
   spec.email         = ["dan@getchef.com"]
   spec.summary       = %q{Installs a vendored copy of Gecode suitable for use with dep-selector}

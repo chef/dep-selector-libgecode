@@ -23,4 +23,4 @@ ext/libgecode3/vendor/gecode-3.7.3/doxygen.conf
 ext/libgecode3/vendor/gecode-3.7.3/doxygen.hh
 ext/libgecode3/vendor/gecode-3.7.3/gecode/support/config.hpp
 ext/libgecode3/vendor/gecode-3.7.3/tools/flatzinc/mzn-gecode
-lib/dep-selector-libgecode3/vendored-gecode/*
+lib/dep-selector-libgecode/vendored-gecode/*

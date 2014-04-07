@@ -5,7 +5,7 @@ module GecodeBuild
 
   GECODE_VENDOR_DIR = File.expand_path("../vendor/gecode-3.7.3", __FILE__).freeze
 
-  PREFIX = File.expand_path("../../../lib/dep-selector-libgecode3/vendored-gecode", __FILE__).freeze
+  PREFIX = File.expand_path("../../../lib/dep-selector-libgecode/vendored-gecode", __FILE__).freeze
 
   LOG_FILE_PATH = File.expand_path("../gecode_build.log", __FILE__)
 
