@@ -1,3 +1,5 @@
+exit(0) if ENV["USE_SYSTEM_GECODE"]
+
 require 'pp'
 
 module GecodeBuild
@@ -54,4 +56,3 @@ module GecodeBuild
 end
 
 GecodeBuild.run
-
