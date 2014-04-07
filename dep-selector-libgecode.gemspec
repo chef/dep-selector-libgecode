@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Installs a vendored copy of Gecode suitable for use with dep-selector}
   spec.description   = spec.summary
   spec.homepage      = ""
-  spec.license       = "MIT"
+  spec.licenses       = ["MIT", "Apache 2.0"]
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
