@@ -9,20 +9,26 @@ module GecodeBuild
 
   PREFIX = File.expand_path("../../../lib/dep-selector-libgecode/vendored-gecode", __FILE__).freeze
 
-  LOG_FILE_PATH = File.expand_path("../gecode_build.log", __FILE__)
+  def self.windows?
+   !!(RUBY_PLATFORM =~ /mswin|mingw|windows/)
+  end
 
   def self.gecode_vendor_dir
     GECODE_VENDOR_DIR
+  end
+
+  def self.configure
+    File.join(GECODE_VENDOR_DIR, "configure")
   end
 
   def self.prefix
     PREFIX
   end
 
-  # TODO: this needs to detect windows and add `--with-host-os=windows`
   def self.configure_cmd
-    %W[
-      ./configure
+    args = %W[
+      sh
+      #{configure}
       --prefix=#{prefix}
       --disable-doc-dot
       --disable-doc-search
@@ -33,14 +39,24 @@ module GecodeBuild
       --disable-examples
       --disable-flatzinc
     ]
+    args << "--with-host-os=windows" if windows?
+    args
+  end
+
+  def self.setup_env
+    if windows?
+      ENV['CC'] = 'gcc'
+      ENV['CXX'] = 'g++'
+    end
   end
 
   def self.system(*args)
     print("-> #{args.join(' ')}\n")
-    super(*args, [:out, :err] => [LOG_FILE_PATH, "w"])
+    super(*args)
   end
 
   def self.run_build_commands
+    setup_env
     system(*configure_cmd) &&
       system("make", "clean") &&
       system("make", "-j", "5") &&
@@ -49,7 +65,7 @@ module GecodeBuild
 
   def self.run
     Dir.chdir(gecode_vendor_dir) do
-      run_build_commands or raise BuildError, "Failed to build gecode library. See log for details: #{LOG_FILE_PATH}"
+      run_build_commands or raise BuildError, "Failed to build gecode library."
     end
   end
 
