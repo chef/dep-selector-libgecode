@@ -17,6 +17,7 @@ module GecodeBuild
     PREFIX
   end
 
+  # TODO: this needs to detect windows and add `--with-host-os=windows`
   def self.configure_cmd
     %W[
       ./configure
