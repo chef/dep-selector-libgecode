@@ -48,6 +48,15 @@ module GecodeBuild
       ENV['CC'] = 'gcc'
       ENV['CXX'] = 'g++'
     end
+
+    # Configure the gecode libraries to look for other gecode libraries in the
+    # installed lib dir. This isn't needed for dep-selector to correctly link
+    # the libraries it uses, but if you check the libraries with `ldd`, they
+    # will appear to have missing deps or to link to system installed gecode.
+    # When used inside an Omnibus project, this will make the health checker
+    # report an error.
+    libpath = File.join(PREFIX, "lib")
+    ENV['LD_RUN_PATH'] = libpath
   end
 
   # Depending on the version of mingw we're using, g++ may or may not fail when
