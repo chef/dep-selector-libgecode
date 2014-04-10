@@ -50,6 +50,17 @@ module GecodeBuild
     end
   end
 
+  # Depending on the version of mingw we're using, g++ may or may not fail when
+  # given the -pthreads option. When testing with `gcc version 4.6.2 (GCC)`
+  # mingw, this patch is required for the build to succeed.
+  def self.patch_configure
+    if windows?
+      original_configure = IO.read(configure)
+      original_configure.gsub!('pthread', 'mthread')
+      File.open(configure, "w+") { |f| f.print(original_configure) }
+    end
+  end
+
   def self.system(*args)
     print("-> #{args.join(' ')}\n")
     super(*args)
@@ -57,6 +68,7 @@ module GecodeBuild
 
   def self.run_build_commands
     setup_env
+    patch_configure
     system(*configure_cmd) &&
       system("make", "clean") &&
       system("make", "-j", "5") &&
