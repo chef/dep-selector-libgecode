@@ -31,6 +31,14 @@ Or install it yourself as:
 
     $ gem install dep-selector-libgecode
 
+### Use the system gecode
+
+Use the "USE_SYSTEM_GECODE" environment variable when installing to 
+make dep-selector-libgecode use the system version, instead of
+downloading the source and building its own copy:
+
+    $ USE_SYSTEM_GECODE=1 gem install dep-seector-libgecode
+
 ## Usage
 
 `DepSelectorLibgecode` provides helper functions for locating the
