@@ -31,6 +31,15 @@ Or install it yourself as:
 
     $ gem install dep-selector-libgecode
 
+### Requirements
+
+This gem runs make with concurrent jobs to speed build time, so it uses
+about 2GB of RAM during the build. If this doesn't work for your
+environment, see 'Using a System Gecode Instead' below. Better yet, if
+you only want to install Berkshelf, try using
+[ChefDK](http://www.getchef.com/downloads/chef-dk) instead of a gem
+install.
+
 ### Using a System Gecode Instead
 
 Use the "USE_SYSTEM_GECODE" environment variable when installing to
