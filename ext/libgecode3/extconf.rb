@@ -47,6 +47,10 @@ module GecodeBuild
     if windows?
       ENV['CC'] = 'gcc'
       ENV['CXX'] = 'g++'
+    # Older versions of CentOS and RHEL need to use this
+    elsif File.exist?('/usr/bin/gcc44')
+      ENV['CC'] = 'gcc44'
+      ENV['CXX'] = 'g++44'
     end
 
     # Configure the gecode libraries to look for other gecode libraries in the
