@@ -2712,7 +2712,9 @@ $as_echo "Windows" >&6; }
        ;;
      esac
 
-if test "${CXX}x" = "x" -a "${CC}x" = "x" -a "${host_os}" = "windows"; then
+if test `uname -s | cut -c 1-6` = "CYGWIN"; then
+  echo "CYGWIN is not Windows!"
+elif test "${CXX}x" = "x" -a "${CC}x" = "x" -a "${host_os}" = "windows"; then
   CC=cl
   CXX=cl
 fi
