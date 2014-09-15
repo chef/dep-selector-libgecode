@@ -48,6 +48,9 @@ module GecodeBuild
       ENV['CC'] = 'gcc'
       ENV['CXX'] = 'g++'
 
+      # Ruby DevKit ships with BSD Tar
+      ENV['PROG_TAR'] ||= 'bsdtar'
+
       # Optimize for size on Windows
       ENV['CFLAGS'] = '-Os'
       ENV['CXXFLAGS'] = '-Os'
