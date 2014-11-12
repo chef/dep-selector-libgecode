@@ -6282,14 +6282,14 @@ $as_echo "#define GECODE_HAS_UNISTD_H 1" >>confdefs.h
 fi
 
 
-  ac_fn_cxx_check_header_mongrel "$LINENO" "pthread.h" "ac_cv_header_pthread_h" "$ac_includes_default"
-if test "x$ac_cv_header_pthread_h" = xyes; then :
+  ac_fn_cxx_check_header_mongrel "$LINENO" "mthread.h" "ac_cv_header_mthread_h" "$ac_includes_default"
+if test "x$ac_cv_header_mthread_h" = xyes; then :
 
 $as_echo "#define GECODE_THREADS_PTHREADS 1" >>confdefs.h
 
-   CFLAGS="-pthread${CFLAGS:+ }${CFLAGS}"
-    CXXFLAGS="-pthread${CXXFLAGS:+ }${CXXFLAGS}"
-   DLLFLAGS="-pthread${DLLFLAGS:+ }${DLLFLAGS}"
+   CFLAGS="-mthread${CFLAGS:+ }${CFLAGS}"
+    CXXFLAGS="-mthread${CXXFLAGS:+ }${CXXFLAGS}"
+   DLLFLAGS="-mthread${DLLFLAGS:+ }${DLLFLAGS}"
 
 else
   ac_fn_cxx_check_header_mongrel "$LINENO" "windows.h" "ac_cv_header_windows_h" "$ac_includes_default"

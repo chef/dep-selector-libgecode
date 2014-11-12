@@ -25,7 +25,7 @@ task :native => ['compile'] do
   gemspec.files += Dir['lib/dep-selector-libgecode/vendored-gecode/**/*']
   gemspec.platform = Gem::Platform.new(RUBY_PLATFORM)
   gem = nil
-  if Gem::VERSION > '.2'
+  if Gem::VERSION > '2.0'
     gem = Gem::Package.build(gemspec)
   else
     gem = Gem::Builder.new(gemspec).build
