@@ -11,10 +11,19 @@ Gem::PackageTask.new(gemspec) do |pkg|
 end
 
 task :compile do
-  cd "ext/libgecode3"
-  ruby "extconf.rb"
+  Dir.chdir "ext/libgecode3" do
+    ruby "extconf.rb"
+  end
 end
 
 task :clean do
   sh "git clean -fdx"
+end
+
+task :native => ['compile'] do
+  gemspec.files += Dir['lib/dep-selector-libgecode/vendored-gecode/**/*']
+  gemspec.platform = Gem::Platform.new(RUBY_PLATFORM)
+  gem = Gem::Builder.new(gemspec).build
+  mkdir_p 'pkg'
+  mv gem, "pkg/dep-selector-libgecode-#{RUBY_PLATFORM}-#{gemspec.version}.gem"
 end
