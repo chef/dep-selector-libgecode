@@ -21,6 +21,7 @@ task :clean do
 end
 
 task :native => ['compile'] do
+  cp_r "pkg/dep-selector-libgecode-#{gemspec.version}/lib/dep-selector-libgecode/vendored-gecode", "lib/dep-selector-libgecode/"
   gemspec.files += Dir['lib/dep-selector-libgecode/vendored-gecode/**/*']
   gemspec.platform = Gem::Platform.new(RUBY_PLATFORM)
   gem = nil
@@ -29,6 +30,5 @@ task :native => ['compile'] do
   else
     gem = Gem::Builder.new(gemspec).build
   end
-  mkdir_p 'pkg'
   mv gem, "pkg/dep-selector-libgecode-#{gemspec.version}-#{gemspec.platform.to_s}.gem"
 end
