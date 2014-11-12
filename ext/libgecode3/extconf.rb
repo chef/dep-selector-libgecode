@@ -7,7 +7,7 @@ module GecodeBuild
 
   GECODE_VENDOR_DIR = File.expand_path("../vendor/gecode-3.7.3", __FILE__).freeze
 
-  PREFIX = File.expand_path("../../../lib/dep-selector-libgecode/vendored-gecode", __FILE__).freeze
+  PREFIX = File.expand_path("../../../../../lib/dep-selector-libgecode/vendored-gecode", __FILE__).freeze
 
   def self.windows?
    !!(RUBY_PLATFORM =~ /mswin|mingw|windows/)
