@@ -31,6 +31,23 @@ Or install it yourself as:
 
     $ gem install dep-selector-libgecode
 
+## Installation on Windows
+
+* Don't set USE_SYSTEM_GECODE to anything. The build only checks for the
+  presence of this variable, not the value. If you really want to install
+  gecode yourself, be prepared to patch the source code (you should also be
+  familiar with how Windows dynamic linking works before embarking on this
+  path).
+* Install ruby. Install DevKit (preferred), or install mingw and add it to your
+  PATH. You can use the Chef omnibus MSI to get a working ruby and devkit.
+* Install a working tar, and include it in your PATH. There is a tar binary
+  that comes with the git package, but it is horribly broken and only good for
+  generating core dumps. Before you build anything check where tar to make sure
+  the tar from git is not the first one in your PATH. The chef-client omnibus
+  package has a tar that works (easiest), or you can get one from here:
+  http://gnuwin32.sourceforge.net/packages/gtar.htm
+* gem install berkshelf should work now.
+
 ### Requirements
 
 This gem runs make with concurrent jobs to speed build time, so it uses
