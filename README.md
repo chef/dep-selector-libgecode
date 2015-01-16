@@ -36,7 +36,7 @@ Or install it yourself as:
 * The recommended installation method is
   [ChefDK](https://downloads.chef.io/chef-dk/windows/#/) and the following
   steps can be skipped if you choose this method.
-* Don't set USE_SYSTEM_GECODE to anything. The build only checks for the
+* Don't set `USE_SYSTEM_GECODE` to anything. The build only checks for the
   presence of this variable, not the value.
 * Install [ruby](http://rubyinstaller.org/downloads/). Install
   [DevKit](http://rubyinstaller.org/add-ons/devkit/)(preferred), or install
@@ -44,11 +44,11 @@ Or install it yourself as:
   PATH. You can use the Chef omnibus MSI to get a working ruby and devkit.
 * Install a working tar, and include it in your PATH. There is a tar binary
   that comes with the git package, but it is horribly broken and only good for
-  generating core dumps. Before you build anything check where tar to make sure
+  generating core dumps. Before you build anything check `where tar` to make sure
   the tar from git is not the first one in your PATH. The chef-client omnibus
   package has a tar that works (easiest), or you can get one from here:
   http://gnuwin32.sourceforge.net/packages/gtar.htm
-* gem install berkshelf should work now.
+* `gem install berkshelf` should work now.
 * Examples for automating these builds can also be found at
   [omnibus-chef](https://github.com/opscode/omnibus-chef) and
   [omnibus-software](https://github.com/opscode/omnibus-software).
