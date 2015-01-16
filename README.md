@@ -38,7 +38,9 @@ Or install it yourself as:
   steps can be skipped if you choose this method.
 * Don't set USE_SYSTEM_GECODE to anything. The build only checks for the
   presence of this variable, not the value.
-* Install ruby. Install DevKit (preferred), or install mingw and add it to your
+* Install [ruby](http://rubyinstaller.org/downloads/). Install
+  [DevKit](http://rubyinstaller.org/add-ons/devkit/)(preferred), or install
+  [mingw](http://sourceforge.net/projects/mingw/files/) and add it to your
   PATH. You can use the Chef omnibus MSI to get a working ruby and devkit.
 * Install a working tar, and include it in your PATH. There is a tar binary
   that comes with the git package, but it is horribly broken and only good for
