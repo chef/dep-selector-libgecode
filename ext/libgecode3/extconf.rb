@@ -91,7 +91,7 @@ module GecodeBuild
     patch_configure
     system(*configure_cmd) &&
       system("make", "clean") &&
-      system("make", "-j", "5") &&
+      system("make") &&
       system("make", "install") &&
       system("make", "distclean")
   end
