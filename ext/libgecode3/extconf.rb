@@ -12,6 +12,10 @@ module GecodeBuild
   def self.windows?
    !!(RUBY_PLATFORM =~ /mswin|mingw|windows/)
   end
+  
+  def self.sunos?
+    `uname`.strip == 'SunOS'
+  end
 
   def self.gecode_vendor_dir
     GECODE_VENDOR_DIR
@@ -40,6 +44,7 @@ module GecodeBuild
       --disable-flatzinc
     ]
     args << "--with-host-os=windows" if windows?
+    args << "--with-host-os=Linux" if sunos?
     args
   end
 
