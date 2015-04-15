@@ -9,6 +9,10 @@ module GecodeBuild
 
   PREFIX = File.expand_path("../../../lib/dep-selector-libgecode/vendored-gecode", __FILE__).freeze
 
+  def self.openbsd?
+   !!(RUBY_PLATFORM =~ /openbsd/)
+  end
+
   def self.windows?
    !!(RUBY_PLATFORM =~ /mswin|mingw|windows/)
   end
@@ -25,9 +29,17 @@ module GecodeBuild
     PREFIX
   end
 
+  def self.sh
+    if openbsd?
+      "bash"
+    else
+      "sh"
+    end
+  end
+
   def self.configure_cmd
     args = %W[
-      sh
+      #{sh}
       #{configure}
       --prefix=#{prefix}
       --disable-doc-dot
@@ -40,6 +52,7 @@ module GecodeBuild
       --disable-flatzinc
     ]
     args << "--with-host-os=windows" if windows?
+    args << "--with-host-os=linux" if openbsd?
     args
   end
 
@@ -58,6 +71,10 @@ module GecodeBuild
     elsif File.exist?('/usr/bin/gcc44')
       ENV['CC'] = 'gcc44'
       ENV['CXX'] = 'g++44'
+    end
+
+    if openbsd?
+      ENV['CONFIG_SHELL'] = '/usr/local/bin/bash'
     end
 
     # Configure the gecode libraries to look for other gecode libraries in the
@@ -81,6 +98,14 @@ module GecodeBuild
     end
   end
 
+  def self.make
+    if openbsd?
+      "gmake"
+    else
+      "make"
+    end
+  end
+
   def self.system(*args)
     print("-> #{args.join(' ')}\n")
     super(*args)
@@ -90,10 +115,10 @@ module GecodeBuild
     setup_env
     patch_configure
     system(*configure_cmd) &&
-      system("make", "clean") &&
-      system("make", "-j", "5") &&
-      system("make", "install") &&
-      system("make", "distclean")
+      system(make, "clean") &&
+      system(make, "-j", "5") &&
+      system(make, "install") &&
+      system(make, "distclean")
   end
 
   def self.run
