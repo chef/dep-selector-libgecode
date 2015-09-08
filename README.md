@@ -73,6 +73,25 @@ downloading the source and building its own copy:
 *WARNING:* Ensure that your system packages provide Gecode version 3 and
 not version 4. Version 4 does not work with dep-selector.
 
+#### Debian unstable
+
+On debian unstable, the version 4 geode is installed by default.
+
+The symptom of the problem is :
+```
+Could not open library '/var/lib/gems/2.1.0/gems/dep_selector-1.0.3/lib/dep_gecode.so': /var/lib/gems/2.1.0/gems/dep_selector-1.0.3/lib/dep_gecode.so: undefined symbol: _ZN6Gecode16VarBranchOptions3defE
+```
+
+The solution : 
+
+1. add this to your apt-sources
+
+    deb http://ftp.us.debian.org/debian/ wheezy main contrib non-freeroot
+
+2. install the right version 
+
+    apt-get install libgecode-dev=3.7.3-1
+
 ## Usage
 
 `DepSelectorLibgecode` provides helper functions for locating the
