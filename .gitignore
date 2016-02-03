@@ -14,6 +14,8 @@ ext/dep_gecode/Makefile
 *.changes
 *.build
 pkg/*
+bin/
+.bundle
 Gemfile.lock
 *.so
 *.def
