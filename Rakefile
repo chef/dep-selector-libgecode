@@ -1,9 +1,8 @@
-require 'rubygems'
-require 'rake'
+require "bundler/gem_tasks"
 
-require 'rubygems/package_task'
+require "rubygems/package_task"
 
-gemspec = eval(File.read('dep-selector-libgecode.gemspec'))
+gemspec = eval(File.read("dep-selector-libgecode.gemspec"))
 
 Gem::PackageTask.new(gemspec) do |pkg|
   pkg.need_zip = true
