@@ -52,8 +52,10 @@ module GecodeBuild
       ENV['PROG_TAR'] ||= 'bsdtar'
 
       # Optimize for size on Windows
-      ENV['CFLAGS'] += ' -Os'
-      ENV['CXXFLAGS'] += ' -Os'
+      ENV['CFLAGS'] ||= ""
+      ENV['CFLAGS'] << " -Os"
+      ENV['CXXFLAGS'] ||= ""
+      ENV['CXXFLAGS'] << " -Os"
     # Older versions of CentOS and RHEL need to use this
     elsif File.exist?('/usr/bin/gcc44')
       ENV['CC'] = 'gcc44'
