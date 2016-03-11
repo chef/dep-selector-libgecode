@@ -45,15 +45,15 @@ module GecodeBuild
 
   def self.setup_env
     if windows?
-      ENV['CC'] = 'gcc'
-      ENV['CXX'] = 'g++'
+      ENV['CC'] ||= 'gcc'
+      ENV['CXX'] ||= 'g++'
 
       # Ruby DevKit ships with BSD Tar
       ENV['PROG_TAR'] ||= 'bsdtar'
 
       # Optimize for size on Windows
-      ENV['CFLAGS'] = '-Os'
-      ENV['CXXFLAGS'] = '-Os'
+      ENV['CFLAGS'] += ' -Os'
+      ENV['CXXFLAGS'] += ' -Os'
     # Older versions of CentOS and RHEL need to use this
     elsif File.exist?('/usr/bin/gcc44')
       ENV['CC'] = 'gcc44'
