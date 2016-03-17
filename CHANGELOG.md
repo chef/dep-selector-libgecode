@@ -1,7 +1,17 @@
 # Change Log
 
-## [1.1.0](https://github.com/chef/dep-selector-libgecode/tree/1.1.0) (2016-02-03)
-[Full Changelog](https://github.com/chef/dep-selector-libgecode/compare/1.0.2...1.1.0)
+## [1.2.0](https://github.com/chef/dep-selector-libgecode/tree/1.2.0) (2016-03-17)
+[Full Changelog](https://github.com/chef/dep-selector-libgecode/compare/v1.1.0...1.2.0)
+
+**Merged pull requests:**
+
+- Compile on Windows with passed-in flags [\#49](https://github.com/chef/dep-selector-libgecode/pull/49) ([jkeiser](https://github.com/jkeiser))
+
+## [v1.1.0](https://github.com/chef/dep-selector-libgecode/tree/v1.1.0) (2016-02-04)
+[Full Changelog](https://github.com/chef/dep-selector-libgecode/compare/v1.1.0.beta.1...v1.1.0)
+
+## [v1.1.0.beta.1](https://github.com/chef/dep-selector-libgecode/tree/v1.1.0.beta.1) (2016-02-04)
+[Full Changelog](https://github.com/chef/dep-selector-libgecode/compare/1.0.2...v1.1.0.beta.1)
 
 **Fixed bugs:**
 
@@ -18,6 +28,7 @@
 
 **Merged pull requests:**
 
+- Bump version to 1.1, add github\_changelog\_generator [\#48](https://github.com/chef/dep-selector-libgecode/pull/48) ([jkeiser](https://github.com/jkeiser))
 - Update installation instructions for windows. [\#40](https://github.com/chef/dep-selector-libgecode/pull/40) ([cmluciano](https://github.com/cmluciano))
 - Configure Window’s environments to use `bsdtar` [\#33](https://github.com/chef/dep-selector-libgecode/pull/33) ([schisamo](https://github.com/schisamo))
 
