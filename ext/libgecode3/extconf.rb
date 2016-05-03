@@ -86,12 +86,29 @@ module GecodeBuild
     super(*args)
   end
 
+  def self.num_processors
+    case RbConfig::CONFIG['host_os']
+    when /darwin/
+      ((`which hwprefs` != '') ? `hwprefs thread_count` : `sysctl -n hw.ncpu`).chomp
+    when /linux/
+      `cat /proc/cpuinfo | grep processor | wc -l`.chomp
+    when /freebsd/
+      `sysctl -n hw.ncpu`.chomp
+    when /mswin|mingw/
+      require 'win32ole'
+      wmi = WIN32OLE.connect("winmgmts://")
+      # This only includes physical cores, HT's are not included.
+      cpu = wmi.ExecQuery("select NumberOfCores from Win32_Processor")
+      cpu.to_enum.first.NumberOfCores
+    end
+  end
+
   def self.run_build_commands
     setup_env
     patch_configure
     system(*configure_cmd) &&
       system("make", "clean") &&
-      system("make", "-j", "5") &&
+      system("make", "-j", num_processors) &&
       system("make", "install") &&
       system("make", "distclean")
   end
