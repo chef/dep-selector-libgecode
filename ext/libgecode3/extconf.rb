@@ -103,6 +103,8 @@ module GecodeBuild
         else
           4
         end
+    n = n.to_i
+    return 1 if n < 1
     return 4 if n > 4
     n
   end
@@ -112,7 +114,7 @@ module GecodeBuild
     patch_configure
     system(*configure_cmd) &&
       system("make", "clean") &&
-      system("make", "-j", num_processors + 1) &&
+      system("make", "-j", (num_processors + 1).to_s) &&
       system("make", "install") &&
       system("make", "distclean")
   end
