@@ -100,6 +100,8 @@ module GecodeBuild
       # This only includes physical cores, HT's are not included.
       cpu = wmi.ExecQuery("select NumberOfCores from Win32_Processor")
       cpu.to_enum.first.NumberOfCores
+    else
+      4
     end
   end
 
@@ -108,7 +110,7 @@ module GecodeBuild
     patch_configure
     system(*configure_cmd) &&
       system("make", "clean") &&
-      system("make", "-j", num_processors) &&
+      system("make", "-j", num_processors + 1) &&
       system("make", "install") &&
       system("make", "distclean")
   end
