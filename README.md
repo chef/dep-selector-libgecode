@@ -88,6 +88,21 @@ DepSelectorLibgecode.opt_path
 DepSelectorLibgecode.include_path
 ```
 
+### Vendoring Native Gems (docs for Maintainers)
+
+The `rake native` command can be used to build a native "fat" gem.
+
+It is recommended to use the following process:
+
+```
+% git clean -ffdx
+% git checkout -- .
+% rake native
+% gem push pkg/dep-selector-libgecode-1.3.0-x86_64-darwin-15.gem  # obviously use the filename you actually built here
+```
+
+Without cleaning up the repo first and nuking stuff in ext/ and pkg/ the `rake native` command will fail.
+
 ## Licensing
 
 The packaging code here is released under the terms of the Apache2
