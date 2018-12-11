@@ -7,20 +7,17 @@ Gem::Specification.new do |spec|
   spec.name          = "dep-selector-libgecode"
   spec.version       = DepSelectorLibgecode::VERSION
   spec.authors       = ["danielsdeleo"]
-  spec.email         = ["dan@getchef.com"]
+  spec.email         = ["dan@chef.io"]
   spec.summary       = %q{Installs a vendored copy of Gecode suitable for use with dep-selector}
   spec.description   = spec.summary
-  spec.homepage      = ""
-  spec.licenses       = ["MIT", "Apache 2.0"]
+  spec.homepage      = "https://github.com/chef/dep-selector-libgecode"
+  spec.licenses       = ["MIT", "Apache-2.0"]
 
-  spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.files         = %w{LICENSE} + Dir.glob("{lib,ext}/**/*", File::FNM_DOTMATCH).reject { |f| File.directory?(f) }
   spec.require_paths = ["lib"]
 
   spec.extensions = Dir["ext/**/extconf.rb"]
 
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency "github_changelog_generator"
 end
