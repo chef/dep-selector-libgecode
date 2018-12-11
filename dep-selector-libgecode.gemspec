@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = "dep-selector-libgecode"
   spec.version       = DepSelectorLibgecode::VERSION
   spec.authors       = ["danielsdeleo"]
-  spec.email         = ["dan@getchef.com"]
+  spec.email         = ["dan@chef.io"]
   spec.summary       = %q{Installs a vendored copy of Gecode suitable for use with dep-selector}
   spec.description   = spec.summary
-  spec.homepage      = ""
-  spec.licenses       = ["MIT", "Apache 2.0"]
+  spec.homepage      = "https://github.com/chef/dep-selector-libgecode"
+  spec.licenses       = ["MIT", "Apache-2.0"]
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
