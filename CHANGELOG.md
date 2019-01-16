@@ -1,9 +1,10 @@
 # Change Log
 
-<!-- latest_release unreleased -->
-## Unreleased
+<!-- latest_release 1.3.3 -->
+## [v1.3.3](https://github.com/chef/dep-selector-libgecode/tree/v1.3.3) (2019-01-16)
 
 #### Merged Pull Requests
+- Remove the bundler dev dep pin [#62](https://github.com/chef/dep-selector-libgecode/pull/62) ([tas50](https://github.com/tas50))
 - Wire up expeditor [#60](https://github.com/chef/dep-selector-libgecode/pull/60) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 
@@ -11,6 +12,7 @@
 ### Changes since 1.3.1 release
 
 #### Merged Pull Requests
+- Remove the bundler dev dep pin [#62](https://github.com/chef/dep-selector-libgecode/pull/62) ([tas50](https://github.com/tas50)) <!-- 1.3.3 -->
 - Wire up expeditor [#60](https://github.com/chef/dep-selector-libgecode/pull/60) ([tas50](https://github.com/tas50)) <!-- 1.3.2 -->
 <!-- release_rollup -->
 
