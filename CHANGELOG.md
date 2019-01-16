@@ -1,11 +1,19 @@
 # Change Log
 
+<!-- latest_release -->
+<!-- latest_release -->
+
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 ## [1.2.0](https://github.com/chef/dep-selector-libgecode/tree/1.2.0) (2016-03-17)
 [Full Changelog](https://github.com/chef/dep-selector-libgecode/compare/v1.1.0...1.2.0)
 
 **Merged pull requests:**
 
 - Compile on Windows with passed-in flags [\#49](https://github.com/chef/dep-selector-libgecode/pull/49) ([jkeiser](https://github.com/jkeiser))
+<!-- latest_stable_release -->
 
 ## [v1.1.0](https://github.com/chef/dep-selector-libgecode/tree/v1.1.0) (2016-02-04)
 [Full Changelog](https://github.com/chef/dep-selector-libgecode/compare/v1.1.0.beta.1...v1.1.0)
