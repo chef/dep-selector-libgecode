@@ -6,8 +6,8 @@ require 'dep-selector-libgecode/version'
 Gem::Specification.new do |spec|
   spec.name          = "dep-selector-libgecode"
   spec.version       = DepSelectorLibgecode::VERSION
-  spec.authors       = ["danielsdeleo"]
-  spec.email         = ["dan@chef.io"]
+  spec.authors       = ["Chef Software"]
+  spec.email         = ["oss@chef.io"]
   spec.summary       = %q{Installs a vendored copy of Gecode suitable for use with dep-selector}
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/chef/dep-selector-libgecode"
@@ -18,6 +18,6 @@ Gem::Specification.new do |spec|
 
   spec.extensions = Dir["ext/**/extconf.rb"]
 
-  spec.add_development_dependency "bundler", "~> 1.5"
+  spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
 end
