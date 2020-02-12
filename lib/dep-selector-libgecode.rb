@@ -1,4 +1,4 @@
-require "dep-selector-libgecode/version"
+require_relative "dep-selector-libgecode/version"
 
 module DepSelectorLibgecode
 
