@@ -1,30 +1,27 @@
 # Change Log
 
-<!-- latest_release 1.3.5 -->
-## [v1.3.5](https://github.com/chef/dep-selector-libgecode/tree/v1.3.5) (2020-02-12)
-
-#### Merged Pull Requests
-- Use require_relative to speed up requires [#64](https://github.com/chef/dep-selector-libgecode/pull/64) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=1.3.1 -->
-### Changes since 1.3.1 release
-
-#### Merged Pull Requests
-- Use require_relative to speed up requires [#64](https://github.com/chef/dep-selector-libgecode/pull/64) ([tas50](https://github.com/tas50)) <!-- 1.3.5 -->
-- Add code of conduct file [#61](https://github.com/chef/dep-selector-libgecode/pull/61) ([tas50](https://github.com/tas50)) <!-- 1.3.4 -->
-- Remove the bundler dev dep pin [#62](https://github.com/chef/dep-selector-libgecode/pull/62) ([tas50](https://github.com/tas50)) <!-- 1.3.3 -->
-- Wire up expeditor [#60](https://github.com/chef/dep-selector-libgecode/pull/60) ([tas50](https://github.com/tas50)) <!-- 1.3.2 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v1.3.5](https://github.com/chef/dep-selector-libgecode/tree/v1.3.5) (2020-02-12)
+
+#### Merged Pull Requests
+- Wire up expeditor [#60](https://github.com/chef/dep-selector-libgecode/pull/60) ([tas50](https://github.com/tas50))
+- Remove the bundler dev dep pin [#62](https://github.com/chef/dep-selector-libgecode/pull/62) ([tas50](https://github.com/tas50))
+- Add code of conduct file [#61](https://github.com/chef/dep-selector-libgecode/pull/61) ([tas50](https://github.com/tas50))
+- Use require_relative to speed up requires [#64](https://github.com/chef/dep-selector-libgecode/pull/64) ([tas50](https://github.com/tas50))
+<!-- latest_stable_release -->
+
 ## [1.2.0](https://github.com/chef/dep-selector-libgecode/tree/1.2.0) (2016-03-17)
 [Full Changelog](https://github.com/chef/dep-selector-libgecode/compare/v1.1.0...1.2.0)
 
 **Merged pull requests:**
 
 - Compile on Windows with passed-in flags [\#49](https://github.com/chef/dep-selector-libgecode/pull/49) ([jkeiser](https://github.com/jkeiser))
-<!-- latest_stable_release -->
 
 ## [v1.1.0](https://github.com/chef/dep-selector-libgecode/tree/v1.1.0) (2016-02-04)
 [Full Changelog](https://github.com/chef/dep-selector-libgecode/compare/v1.1.0.beta.1...v1.1.0)
