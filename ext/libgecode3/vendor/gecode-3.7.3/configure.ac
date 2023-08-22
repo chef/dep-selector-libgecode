@@ -42,6 +42,8 @@ dnl
 AC_REVISION([$Id: configure.ac 12624 2012-03-22 21:55:28Z tack $])
 AC_PREREQ(2.53)
 AC_INIT(GECODE, 3.7.3, users@gecode.org)
+AM_INIT_AUTOMAKE([])
+AC_CONFIG_MACRO_DIRS([m4])
 AC_CONFIG_HEADERS([gecode/support/config.hpp])
 AC_CONFIG_SRCDIR(gecode/kernel.hh)
 
