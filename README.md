@@ -1,4 +1,4 @@
-# DepSelectorLibgecode
+# Dep Selector Libgecode
 
 This library vendors Gecode 3.7.3 as a rubygem so it can easily be used
 with the [dep-selector](https://github.com/opscode/dep-selector)
