@@ -112,17 +112,26 @@ module GecodeBuild
   def self.run_build_commands
     setup_env
     patch_configure
-    system("libtoolize --force") &&
-      system("aclocal") &&
-      system("autoheader") &&
-      system("automake --force-missing --add-missing || true") &&
-      system("autoconf") &&
-      system("autoupdate gecode.m4") &&
+    case RbConfig::CONFIG['host_os']
+    when /mswin|mingw/
       system(*configure_cmd) &&
-      system("make", "clean") &&
-      system("make", "-j", (num_processors + 1).to_s) &&
-      system("make", "install") &&
-      system("make", "distclean")
+        system("make", "clean") &&
+        system("make", "-j", (num_processors + 1).to_s) &&
+        system("make", "install") &&
+        system("make", "distclean")
+    else
+      system("libtoolize --force") &&
+        system("aclocal") &&
+        system("autoheader") &&
+        system("automake --force-missing --add-missing || true") &&
+        system("autoconf") &&
+        system("autoupdate gecode.m4") &&
+        system(*configure_cmd) &&
+        system("make", "clean") &&
+        system("make", "-j", (num_processors + 1).to_s) &&
+        system("make", "install") &&
+        system("make", "distclean")
+    end
   end
 
   def self.run
