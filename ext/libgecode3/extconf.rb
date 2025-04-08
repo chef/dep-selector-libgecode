@@ -1,6 +1,7 @@
 exit(0) if ENV["USE_SYSTEM_GECODE"]
 
 require 'pp'
+require 'rbconfig'
 
 module GecodeBuild
   class BuildError < StandardError; end
@@ -10,7 +11,11 @@ module GecodeBuild
   PREFIX = File.expand_path("../../../lib/dep-selector-libgecode/vendored-gecode", __FILE__).freeze
 
   def self.windows?
-   !!(RUBY_PLATFORM =~ /mswin|mingw|windows/)
+    !!(RUBY_PLATFORM =~ /mswin|mingw|windows/)
+  end
+
+  def self.darwin?
+    RbConfig::CONFIG["host_os"] =~ /darwin/
   end
 
   def self.gecode_vendor_dir
@@ -47,32 +52,24 @@ module GecodeBuild
     if windows?
       ENV['CC'] ||= 'gcc'
       ENV['CXX'] ||= 'g++'
-
-      # Ruby DevKit ships with BSD Tar
       ENV['PROG_TAR'] ||= 'bsdtar'
-
-      # Optimize for size on Windows
       ENV['CFLAGS'] = "#{ENV['CFLAGS']} -Os"
       ENV['CXXFLAGS'] = "#{ENV['CXXFLAGS']} -Os"
-    # Older versions of CentOS and RHEL need to use this
+
     elsif File.exist?('/usr/bin/gcc44')
       ENV['CC'] = 'gcc44'
       ENV['CXX'] = 'g++44'
+
+    elsif darwin?
+      # macOS-specific flags
+      ENV['CXXFLAGS'] = "-std=c++11 -Wno-deprecated-copy -Wno-new-returns-null -arch arm64"
+      ENV['LDFLAGS']  = "-arch arm64"
     end
 
-    # Configure the gecode libraries to look for other gecode libraries in the
-    # installed lib dir. This isn't needed for dep-selector to correctly link
-    # the libraries it uses, but if you check the libraries with `ldd`, they
-    # will appear to have missing deps or to link to system installed gecode.
-    # When used inside an Omnibus project, this will make the health checker
-    # report an error.
     libpath = File.join(PREFIX, "lib")
     ENV['LD_RUN_PATH'] = libpath
   end
 
-  # Depending on the version of mingw we're using, g++ may or may not fail when
-  # given the -pthreads option. When testing with `gcc version 4.6.2 (GCC)`
-  # mingw, this patch is required for the build to succeed.
   def self.patch_configure
     if windows?
       original_configure = IO.read(configure)
@@ -97,7 +94,6 @@ module GecodeBuild
         when /mswin|mingw/
           require 'win32ole'
           wmi = WIN32OLE.connect("winmgmts://")
-          # This only includes physical cores, HT's are not included.
           cpu = wmi.ExecQuery("select NumberOfCores from Win32_Processor")
           cpu.to_enum.first.NumberOfCores
         else
@@ -139,7 +135,6 @@ module GecodeBuild
       run_build_commands or raise BuildError, "Failed to build gecode library."
     end
   end
-
 end
 
 GecodeBuild.run
