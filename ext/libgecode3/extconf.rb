@@ -31,6 +31,8 @@ module GecodeBuild
   end
 
   def self.configure_cmd
+
+    puts "+++++++++++I am in dep-selector-libgecode+++++++++++++"
     args = %W[
       sh
       #{configure}
