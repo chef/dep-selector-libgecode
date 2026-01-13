@@ -114,3 +114,6 @@ See CONTRIBUTING.md for more information.
 
 See CONTRIBUTING.md for more information.
 
+# Copyright
+
+See [COPYRIGHT.md](./COPYRIGHT.md).
